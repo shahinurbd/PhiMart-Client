@@ -1,6 +1,3 @@
-import React from 'react';
-import Hero from '../components/Home/Hero';
-import CarouselSlide from '../components/Carousel/CarouselSlide';
 import HeroCarousel from '../components/Carousel/HeroCarousel';
 import Features from '../components/features';
 import Product from '../components/Products/Product';
