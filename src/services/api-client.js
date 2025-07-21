@@ -1,4 +1,6 @@
 import axios from 'axios'
-export default axios.create({
+const apiClient = axios.create({
     baseURL: "https://phimart-theta.vercel.app/api/v1/"
 });
+
+export default apiClient;

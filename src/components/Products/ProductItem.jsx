@@ -1,7 +1,9 @@
+import { Link } from "react-router";
 import defaultImg from "../../assets/images/default_product.jpg"
 
 const ProductItem = ({ product }) => {
     return (
+        <Link to={`/shop/${product.id}`}>
         <div className="card bg-base-100 w-full md:w-96 shadow-sm">
         <figure className="px-10 pt-10">
             <img
@@ -18,6 +20,7 @@ const ProductItem = ({ product }) => {
             </div>
         </div>
         </div>
+        </Link>
     );
 };
 

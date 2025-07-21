@@ -13,6 +13,8 @@ import Dashboard from '../pages/Dashboard';
 import DashboardLayout from '../layouts/DashboardLayout';
 import Profile from '../pages/Profile';
 import ConfirmPassword from '../components/ForgetPassword/ConfirmPassword';
+import ProductDetails from '../pages/ProductDetails';
+import Cart from '../pages/cart';
 
 const AppRoute = () => {
     return (
@@ -28,6 +30,7 @@ const AppRoute = () => {
                 <Route path='register' element={<Register />} />
                 <Route path='activate/:uid/:token' element={<ActivateAccount />} />
                 <Route path='password/reset/confirm/:uid/:token' element={<ConfirmPassword />} />
+                <Route path='shop/:productId' element={<ProductDetails />} />
                 </Route>
                 
 
@@ -40,6 +43,7 @@ const AppRoute = () => {
                     <Dashboard />
                 } />
                 <Route path='profile' element={<Profile/>} />
+                <Route path='cart' element={<Cart />} />
                 </Route>
             
             
