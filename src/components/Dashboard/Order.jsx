@@ -1,4 +1,14 @@
+import { useEffect, useState } from "react";
+import useAuthContext from "../../hooks/useAuthContext";
+import authApiClient from "../../services/auth-api-client";
 const Order = () => {
+
+  const {user} = useAuthContext();
+  const [orders, setOrders] = useState([]);
+  
+      useEffect(() => {
+        authApiClient.get("/orders/").then((res) => setOrders(res.data));
+      },[orders])
   
   return (
     <div className="mt-6 card bg-base-100 shadow-sm">
@@ -16,42 +26,21 @@ const Order = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>#ORD-7245</td>
-                <td>John Smith</td>
+            {orders.map((order) => (
+              
+              <tr key={order.id}>
+                <td>{order.id}</td>
                 <td>
-                  <div className="badge badge-success">Completed</div>
+                  {user.id === order.user ? user.first_name : "Unknown"}
                 </td>
-                <td>Mar 8, 2025</td>
-                <td>$125.00</td>
-              </tr>
-              <tr>
-                <td>#ORD-7244</td>
-                <td>Sarah Johnson</td>
                 <td>
-                  <div className="badge badge-warning">Processing</div>
+                  <div className="badge badge-success">{order.status}</div>
                 </td>
-                <td>Mar 7, 2025</td>
-                <td>$89.99</td>
+                <td>{order.created_at}</td>
+                <td>${order.total_price}</td>
               </tr>
-              <tr>
-                <td>#ORD-7243</td>
-                <td>Michael Brown</td>
-                <td>
-                  <div className="badge badge-info">Shipped</div>
-                </td>
-                <td>Mar 7, 2025</td>
-                <td>$245.50</td>
-              </tr>
-              <tr>
-                <td>#ORD-7242</td>
-                <td>Emily Davis</td>
-                <td>
-                  <div className="badge badge-success">Completed</div>
-                </td>
-                <td>Mar 6, 2025</td>
-                <td>$112.75</td>
-              </tr>
+            
+            ))}
             </tbody>
           </table>
         </div>
