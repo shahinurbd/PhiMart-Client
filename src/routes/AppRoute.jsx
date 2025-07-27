@@ -16,6 +16,7 @@ import ConfirmPassword from '../components/ForgetPassword/ConfirmPassword';
 import ProductDetails from '../pages/ProductDetails';
 import Cart from '../pages/cart';
 import Orders from '../pages/Orders';
+import AddProducts from '../pages/AddProducts';
 
 const AppRoute = () => {
     return (
@@ -46,6 +47,7 @@ const AppRoute = () => {
                 <Route path='profile' element={<Profile/>} />
                 <Route path='cart' element={<Cart />} />
                 <Route path='orders' element={<Orders />} />
+                <Route path='products/add' element={<AddProducts />} />
                 </Route>
             
             

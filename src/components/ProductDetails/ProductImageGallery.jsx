@@ -15,7 +15,7 @@ const ProductImageGallery = ({images, ProductName}) => {
                 {displayImages.map((ImgObj, index) => (
                     <SwiperSlide key={index}>
                         <div className='aspect-square bg-base-100'>
-                            <img className='h-full w-full object-contain' src={ImgObj.image} alt={ProductName} />
+                            <img className='lg:h-full h-auto w-full object-contain' src={ImgObj.image} alt={ProductName} />
                         </div>
                     </SwiperSlide>
                 ))}
