@@ -106,8 +106,12 @@ const useAuth = () => {
             const response = await apiClient.post("/auth/jwt/create/", userData);
             setAuthTokens(response.data);
             localStorage.setItem("authTokens", JSON.stringify(response.data));
+
+            await fetchUserProfile();
+            return {success: true};
         } catch(error){
             setErrorMsg(error.response.data?.detail);
+            return {success: false};
         }
     };
 
@@ -149,6 +153,7 @@ const useAuth = () => {
         setUser(null);
         setAuthTokens(null);
         localStorage.removeItem("authTokens");
+        localStorage.removeItem("cartId");
 
     }
 
