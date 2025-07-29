@@ -13,8 +13,8 @@ const AddProducts = () => {
   const [categories, setCategories] = useState([]);
   const [productId, setProductId] = useState(null);
   const [previewImages, setPreviewImages] = useState([]);
-  //const [loading, setLoading] = useState(false);
-
+  const [loading, setLoading] = useState(false);
+  const [images, setImages] = useState([]);
   //fetch categories
   useEffect(() => {
     apiClient.get("/categories/").then(res => {
@@ -26,9 +26,11 @@ const AddProducts = () => {
 
   // Submit Product Details
   const handleProductAdd = async(data) => {
+    setLoading(true);
     try {
         const response = await authApiClient.post("/products/", data);
         setProductId(response.data.id);
+        setLoading(false);
     } catch (error) {
         console.log(error);
     }
@@ -38,14 +40,33 @@ const AddProducts = () => {
    // Handle Image Change
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
-    console.log(files);
+    setImages(files);
     setPreviewImages(files.map((file) => URL.createObjectURL(file)));
+  };
+
+  // handle image upload
+  const handleUpload = async () => {
+    if (!images.length) return alert("Please select images.");
+    
+    setLoading(true);
+    try {
+      for (const image of images) {
+        const formData = new FormData();
+        formData.append("image", image);
+        console.log(formData);
+        await authApiClient.post(`/products/${productId}/images/`, formData);
+        setLoading(false);
+      }
+      alert("Images uploaded successfully");
+    } catch (error) {
+      console.log(("Error uploading image", error));
+    }
   };
 
   return (
     <div className="max-w-2xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
       <h2 className="text-2xl font-semibold mb-4">Add New Product</h2>
-      {productId ? (
+      {!productId ? (
       <form onSubmit={handleSubmit(handleProductAdd)} className="space-y-4">
         <div>
           <label className="block text-sm font-medium">Product Name</label>
@@ -123,7 +144,7 @@ const AddProducts = () => {
         </div>
 
         <button type="submit" className="btn btn-primary w-full">
-          Add Product
+          {loading ? "Product Adding..." : "Add Product"}
         </button>
       </form>
       ) : (
@@ -151,8 +172,10 @@ const AddProducts = () => {
 
           <button
             className="btn btn-primary w-full mt-2"
+            onClick={handleUpload}
+            disabled={loading}
           >
-            Upload Images
+           {loading ? "Images Uploading..." : "Upload Images"}
           </button>
         </div>
       )}
