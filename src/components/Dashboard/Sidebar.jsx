@@ -46,7 +46,7 @@ const Sidebar = () => {
       <aside className="menu bg-base-200 w-64 min-h-full p-4 text-base-content">
         {/* Sidebar header */}
         <div>
-          <Link to='/' className="flex items-center gap-2 mb-6 px-2">
+          <Link to='' className="flex items-center gap-2 mb-6 px-2">
             <FiShoppingCart className="h-6 w-6" />
             <h1 className="text-xl font-bold">PhiMart</h1>
           </Link>

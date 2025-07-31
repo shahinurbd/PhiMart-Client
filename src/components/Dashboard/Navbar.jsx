@@ -1,7 +1,9 @@
 import { FiMenu, FiX } from "react-icons/fi";
 import { Link } from "react-router";
+import useAuthContext from "../../hooks/useAuthContext";
 
 const Navbar = ({ sidebarOpen }) => {
+  const { logoutUser } = useAuthContext();
   return (
     <div className="navbar bg-base-100 border-b">
       <div className="flex-none lg:hidden">
@@ -37,10 +39,10 @@ const Navbar = ({ sidebarOpen }) => {
               </Link>
             </li>
             <li>
-              <Link href="/settings">Settings</Link>
+              <Link href="/dashboard">Dashboard</Link>
             </li>
             <li>
-              <button>Logout</button>
+              <button onClick={logoutUser}>Logout</button>
             </li>
           </ul>
         </div>

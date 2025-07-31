@@ -18,32 +18,21 @@ const Navbar = () => {
                 <ul
                     tabIndex={0}
                     className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                    <li><a>Item 1</a></li>
-                    <li>
-                    <a>Parent</a>
-                    <ul className="p-2">
-                        <li><a>Submenu 1</a></li>
-                        <li><a>Submenu 2</a></li>
-                    </ul>
-                    </li>
+                    <li><Link to="" >Home</Link></li>
                     <li><Link to="/shop">Shop</Link></li>
+                    <li><Link>Services</Link></li>
+                    <li><Link>About</Link></li>
                 </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">PhiMart</a>
+                <Link to='' className='font-sans font-bold text-2xl'>PhiMart</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                <li><a>Item 1</a></li>
-                <li>
-                    <details>
-                    <summary>Parent</summary>
-                    <ul className="p-2">
-                        <li><a>Submenu 1</a></li>
-                        <li><a>Submenu 2</a></li>
-                    </ul>
-                    </details>
-                </li>
+                <li><Link to="" >Home</Link></li>
                 <li><Link to="/shop">Shop</Link></li>
+                <li><Link to=''>Services</Link></li>
+                <li><Link to=''>About</Link></li>
+                
                 </ul>
             </div>
             <div className="navbar-end">
@@ -83,12 +72,12 @@ const Navbar = () => {
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                         <li>
-                        <a className="justify-between">
+                        <Link to='dashboard/profile' className="justify-between">
                             Profile
                             <span className="badge">New</span>
-                        </a>
+                        </Link>
                         </li>
-                        <li><a>Settings</a></li>
+                        <li><Link to='dashboard' >Dashboard</Link></li>
                         <li onClick={logoutUser}><a>Logout</a></li>
                         </ul>
                         </div>
@@ -97,8 +86,8 @@ const Navbar = () => {
 
                 ) : (
                     <div className='flex gap-3'>
-                        <Link to="/login" className='btn btn-secondary'>Sign In</Link>
-                        <Link to="/register" className='btn btn-secondary'>Sign Up</Link>
+                        <Link to="/login" className='btn btn-secondary md:py-4 md:px-4 text-sm py-1 px-1'>Sign In</Link>
+                        <Link to="/register" className='btn btn-secondary md:py-4 md:px-4 text-sm py-1 px-1'>Sign Up</Link>
                     </div>
                 )}
             </div>

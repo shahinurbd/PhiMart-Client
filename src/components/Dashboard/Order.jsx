@@ -31,7 +31,7 @@ const Order = () => {
               <tr key={order.id}>
                 <td>{order.id}</td>
                 <td>
-                  {user.id === order.user ? user.first_name : "Unknown"}
+                  {user.id === order.user ? user.first_name : order.user}
                 </td>
                 <td>
                   <div className="badge badge-success">{order.status}</div>

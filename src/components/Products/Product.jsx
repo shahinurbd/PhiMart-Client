@@ -9,6 +9,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import ErrorAlert from '../ErrorAlert';
 import apiClient from '../../services/api-client';
+import { Link } from 'react-router';
 
 const Product = () => {
     const [products, setProducts] = useState([]);
@@ -30,7 +31,7 @@ const Product = () => {
                 <h2 className='text-xl md:text-4xl font-bold'>
                     Trending Products
                 </h2>
-                <a href="#" className='btn btn-secondary text-white p-2 md:p-4 rounded-full text-sm md:text-lg'>View All</a>
+                <Link to='/shop' className='btn btn-secondary text-white p-2 md:p-4 rounded-full text-sm md:text-lg'>View All</Link>
             </div>
 
             {/* Snippper */}
