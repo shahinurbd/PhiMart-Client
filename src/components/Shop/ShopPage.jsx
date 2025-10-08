@@ -1,7 +1,7 @@
 import ProductList from "./ProductList";
 import ProductItem from "../Products/ProductItem";
 import Pagination from "./Pagination";
-import useFatchProducts from "../../hooks/useFatchProducts";
+import useFetchProducts from "../../hooks/useFetchProducts";
 import { useState } from "react";
 import FilterSection from "./FilterSection";
 import useFetchCategories from "../../hooks/useFetchCategories";
@@ -13,7 +13,7 @@ const ShopPage = () => {
     const [selectedCategory, setSelectedCategory] = useState("");
     const [searchQuery, setSearchQuery] = useState("");
     const [sortOrder, setSortOrder] = useState("");
-    const {products, loading, totalPages} = useFatchProducts(currentPage, priceRange,selectedCategory, searchQuery, sortOrder);
+    const {products, loading, totalPages} = useFetchProducts(currentPage, priceRange,selectedCategory, searchQuery, sortOrder);
     
 
     const categories = useFetchCategories();

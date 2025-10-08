@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
 import apiClient from "../services/api-client";
 
-const useFatchProducts = (currentPage, priceRange, selectedCategory, searchQuery, sortOrder) => {
+const useFetchProducts = (currentPage, priceRange, selectedCategory, searchQuery, sortOrder) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
+    const [totalProducts, setTotalProducts] = useState([]);
+
 
     useEffect(() => {
         const fetchProducts = async() => {
@@ -24,7 +26,20 @@ const useFatchProducts = (currentPage, priceRange, selectedCategory, searchQuery
     fetchProducts();
     }, [currentPage, priceRange,selectedCategory,searchQuery, sortOrder]);
 
-    return {products, loading, totalPages}
+    useEffect(() => {
+        const totalproducts = async() => {
+            try {
+                const res = await apiClient.get('products/');
+                setTotalProducts(res.data.count);
+            } catch (error) {
+                console.log("error fetching products", error)
+            }
+        }
+        totalproducts();
+        
+    },[]);
+
+    return {products, loading, totalPages, totalProducts}
 };
 
-export default useFatchProducts;
+export default useFetchProducts;

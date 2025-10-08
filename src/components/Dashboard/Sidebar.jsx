@@ -15,6 +15,7 @@ import useAuthContext from "../../hooks/useAuthContext";
 const Sidebar = () => {
 
   const {user} = useAuthContext();
+  console.log(user);
   const customerItems = [
     { to: "/dashboard", icon: FiBarChart2, label: "Dashboard" },
     { to: "orders", icon:AiOutlineShopping, label: "Orders" },
