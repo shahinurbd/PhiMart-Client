@@ -14,7 +14,7 @@ import DashboardLayout from '../layouts/DashboardLayout';
 import Profile from '../pages/Profile';
 import ConfirmPassword from '../components/ForgetPassword/ConfirmPassword';
 import ProductDetails from '../pages/ProductDetails';
-import Cart from '../pages/cart';
+import Cart from '../pages/Cart';
 import Orders from '../pages/Orders';
 import AddProducts from '../pages/AddProducts';
 
